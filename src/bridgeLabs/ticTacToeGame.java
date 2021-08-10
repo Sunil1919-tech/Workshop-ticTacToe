@@ -29,11 +29,24 @@ public class ticTacToeGame {
         System.out.println("Entered Character is:" +input );
         return input;
     }
+    public static void showBoard(char[] board)
 
+    //Print conditions for to Printing the board
+    {
+        System.out.println("|----|----|----|");
+        System.out.println("| " + board[1] + "  | " + board[2] + "  | " + board[3]+ "  |");
+        System.out.println("|--------------|");
+        System.out.println("| " + board[4] + "  | " + board[5] + "  | " + board[6]+ "  |");
+        System.out.println("|--------------|");
+        System.out.println("| " + board[7] + "  | " + board[8] + "  | " + board[9] + "  |");
+        System.out.println("|----|----|----|");
+
+    }
     //calling main method
     public static void main(String[] args) {
         System.out.println("Welcome to the Tic Tac Toe Game");
-        char[] board = createBoard();
-        assignInput();
+        char[] board = createBoard();               //calling createBoard method in main method
+        assignInput();                              //calling inputs method in the main method
+        showBoard(board);                           // calling showBoard Method in the main method
     }
 }
