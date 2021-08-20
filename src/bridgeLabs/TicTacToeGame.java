@@ -1,5 +1,6 @@
 package bridgeLabs;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -99,9 +100,26 @@ public class TicTacToeGame {
             default:
                 System.out.println("Invalid Option");
         }
-
         showBoard();
     }
+    /*
+    creating a method move to decide the empty block
+     */
+        static void move(){
+            boolean played = false;
+            while (!played) {
+                int playMove = (int) (Math.random() * 10) % 9 + 1;
+                if (playMove > 0 && playMove < 10) {
+                    if (board[playMove] == ' ') {
+                        board[playMove] = computerTurn;
+                        played = true;
+                    }
+                }
+            }
+            showBoard();
+        }
+
+
 
     /**
      * Here main Method , calling the createBoard Method
@@ -114,6 +132,11 @@ public class TicTacToeGame {
         playerTurn(sc);
         showBoard();
         option(sc);
+        move();
+        sc.close();
+
+
+
     }
 }
 
