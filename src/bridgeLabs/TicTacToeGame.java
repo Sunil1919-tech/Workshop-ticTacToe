@@ -102,24 +102,45 @@ public class TicTacToeGame {
         }
         showBoard();
     }
+
     /*
     creating a method move to decide the empty block
      */
-        static void move(){
-            boolean played = false;
-            while (!played) {
-                int playMove = (int) (Math.random() * 10) % 9 + 1;
-                if (playMove > 0 && playMove < 10) {
-                    if (board[playMove] == ' ') {
-                        board[playMove] = computerTurn;
-                        played = true;
-                    }
+    static void move() {
+        boolean played = false;
+        while (!played) {
+            int playMove = (int) (Math.random() * 10) % 9 + 1;
+            if (playMove > 0 && playMove < 10) {
+                if (board[playMove] == ' ') {
+                    board[playMove] = computerTurn;
+                    played = true;
                 }
             }
-            showBoard();
+        }
+        showBoard();
+    }
+
+    /**
+     * method for creating the head or tail to decide who move first
+     */
+    static void toss() {
+        int chance = (int) Math.floor(Math.random() * 10) % 2;
+        System.out.println("Enter 1. to start the game : ");
+        Scanner sc = new Scanner(System.in);
+        int playerToss = sc.nextInt();
+        if (playerToss == chance) {
+            System.out.println("Player won the toss, enter your first Move");
+            option(sc);
+            move();
+
+        } else {
+            System.out.println("Computer won the toss, enter your first move");
+            move();
+            option(sc);
+
         }
 
-
+    }
 
     /**
      * Here main Method , calling the createBoard Method
@@ -133,10 +154,8 @@ public class TicTacToeGame {
         showBoard();
         option(sc);
         move();
+        toss();
         sc.close();
-
-
-
     }
 }
 
